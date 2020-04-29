@@ -1,5 +1,7 @@
 package br.ce.wcaquino.tasks.apitest;
 
+import java.time.LocalDate;
+
 import org.hamcrest.CoreMatchers;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -27,7 +29,7 @@ public class APITest {
 	@Test
 	public void deveAdicionarTarefaComSucesso(){
 		RestAssured
-		.given().body("{\"task\":\"Teste via API\",\"dueDate\":\"2020-04-22\"}").contentType(ContentType.JSON)
+		.given().body("{\"task\":\"Teste via API\",\"dueDate\":\""+LocalDate.now()+"\"}").contentType(ContentType.JSON)
 		.when()
 		.post("/todo")
 		.then().statusCode(201)
